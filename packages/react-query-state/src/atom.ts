@@ -1,11 +1,20 @@
 import { QueryClient } from "react-query"
 
-export function atom<Value>({ key, read }: { key: string; read: Value }) {
+export function atom<Value>({
+  key,
+  initialValue,
+}: {
+  key: string
+  initialValue: Value
+}) {
   const queryClient = new QueryClient()
-  queryClient.setQueryData(key, read)
-  const value = localStorage.getItem(key) as unknown as Value | null | undefined
-  if (value === null || value === undefined) {
-    localStorage.setItem(key, JSON.stringify(read))
+  queryClient.setQueryData(key, initialValue)
+  const existingValue = localStorage.getItem(key) as unknown as
+    | Value
+    | null
+    | undefined
+  if (existingValue === null || existingValue === undefined) {
+    localStorage.setItem(key, JSON.stringify(initialValue))
   }
   return key
 }

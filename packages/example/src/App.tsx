@@ -23,7 +23,7 @@ const Button = styled(MuiButton)(() => ({
 
 const testState = atom<number>({
   key: "test",
-  read: 1,
+  initialValue: 1,
 })
 
 const useTest = () => useAtom<number>(testState)
