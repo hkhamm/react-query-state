@@ -26,8 +26,10 @@ const testState = atom<number>({
   read: 1,
 })
 
+const useTest = () => useAtom<number>(testState)
+
 const ComponentOne: React.FC = () => {
-  const [value, setValue] = useAtom<number>(testState)
+  const [value, setValue] = useTest()
   return (
     <div>
       <h1>Component One</h1>
@@ -43,7 +45,7 @@ const ComponentOne: React.FC = () => {
 }
 
 const ComponentTwo: React.FC = () => {
-  const [value, _] = useAtom<number>(testState)
+  const [value, _] = useTest()
   return (
     <div>
       <h1>Component Two</h1>
