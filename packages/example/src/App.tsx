@@ -1,6 +1,6 @@
 import { Button as MuiButton, styled } from "@mui/material"
+import { atom, useAtom } from "@react-query-state/react-query-state"
 import React from "react"
-import { atom, useAtom } from "./react-query-state"
 
 const Container = styled("div")(() => ({
   textAlign: "center",

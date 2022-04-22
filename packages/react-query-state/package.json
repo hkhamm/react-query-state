@@ -1,0 +1,22 @@
+{
+  "name": "@react-query-state/react-query-state",
+  "private": true,
+  "version": "0.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "npx tsdx build",
+    "prepare": "npx tsdx build",
+    "preinstall": "npx tsdx build"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-query": "^3.38.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-query": "^3.38.0"
+  },
+  "packageManager": "yarn@3.2.0"
+}
