@@ -1,4 +1,4 @@
-import { Button, styled } from "@mui/material"
+import { Button as MuiButton, styled } from "@mui/material"
 import React from "react"
 import { atom } from "./state/atom"
 import { useAtom } from "./state/useAtom"
@@ -16,6 +16,10 @@ const Content = styled("div")(() => ({
   justifyContent: "center",
   fontSize: "calc(10px + 2vmin)",
   color: "white",
+}))
+
+const Button = styled(MuiButton)(() => ({
+  fontSize: 24,
 }))
 
 const testState = atom<number>({
