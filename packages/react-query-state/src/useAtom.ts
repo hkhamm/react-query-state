@@ -5,19 +5,19 @@ import {
   useQueryClient,
 } from "react-query"
 
-export function useAtom<Value>(
+export function useAtom<T>(
   key: string
-): [Value | null | undefined, UseMutateFunction<Value, unknown, Value>] {
+): [T | null | undefined, UseMutateFunction<T, unknown, T>] {
   const queryClient = useQueryClient()
   const { data } = useQuery(key, () => {
     const value = localStorage.getItem(key)
     return value === null || value === undefined
       ? value
-      : (JSON.parse(value) as Value)
+      : (JSON.parse(value) as T)
   })
   const { mutate } = useMutation(
-    async (value: Value) =>
-      new Promise<Value>((resolve) => {
+    async (value: T) =>
+      new Promise<T>((resolve) => {
         localStorage.setItem(key, JSON.stringify(value))
         resolve(value)
       }),

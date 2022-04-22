@@ -1,16 +1,16 @@
 import { QueryClient } from "react-query"
 
-export function atom<Value>({
+export function atom<T>({
   key,
   initialValue,
 }: {
   key: string
-  initialValue: Value
+  initialValue: T
 }) {
   const queryClient = new QueryClient()
   queryClient.setQueryData(key, initialValue)
   const existingValue = localStorage.getItem(key) as unknown as
-    | Value
+    | T
     | null
     | undefined
   if (existingValue === null || existingValue === undefined) {
