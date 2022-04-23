@@ -5,7 +5,7 @@ export function atom<T>({
   initialValue,
 }: {
   key: string
-  initialValue: T
+  initialValue?: T
 }) {
   const queryClient = new QueryClient()
   queryClient.setQueryData(key, initialValue)
@@ -13,7 +13,7 @@ export function atom<T>({
     | T
     | null
     | undefined
-  if (existingValue === null || existingValue === undefined) {
+  if (initialValue && (existingValue === null || existingValue === undefined)) {
     localStorage.setItem(key, JSON.stringify(initialValue))
   }
   return key
