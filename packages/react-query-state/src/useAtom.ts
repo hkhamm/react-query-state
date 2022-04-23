@@ -1,17 +1,13 @@
 import { useMutation, useQuery, useQueryClient } from "react-query"
 
-export function useAtom<T>(
-  key: string
-): [T | undefined, (value: T | undefined) => void] {
+export function useAtom<T>(key: string): [T | null, (value: T | null) => void] {
   const queryClient = useQueryClient()
   const { data } = useQuery(key, () => {
     const value = localStorage.getItem(key)
-    return value === null || value === undefined
-      ? undefined
-      : (JSON.parse(value) as T)
+    return value === null ? value : (JSON.parse(value) as T)
   })
   const { mutate } = useMutation(
-    (value: T | undefined) =>
+    (value: T | null) =>
       new Promise(() => localStorage.setItem(key, JSON.stringify(value))),
     {
       onMutate: (mutatedData) => {
@@ -24,5 +20,5 @@ export function useAtom<T>(
       },
     }
   )
-  return [data as T, (value: T | undefined) => mutate(value)]
+  return [data as T, (value: T | null) => mutate(value)]
 }
