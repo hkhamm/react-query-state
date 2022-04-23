@@ -9,11 +9,8 @@ export function atom<T>({
 }) {
   const queryClient = new QueryClient()
   queryClient.setQueryData(key, initialValue)
-  const existingValue = localStorage.getItem(key) as unknown as
-    | T
-    | null
-    | undefined
-  if (initialValue && (existingValue === null || existingValue === undefined)) {
+  const existingValue = localStorage.getItem(key)
+  if (initialValue && existingValue === null) {
     localStorage.setItem(key, JSON.stringify(initialValue))
   }
   return key
