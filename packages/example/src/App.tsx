@@ -26,10 +26,7 @@ const Button = styled(MuiButton)(() => ({
   fontSize: 24,
 }))
 
-const testState = atom<number>({
-  key: "test",
-  initialValue: 1,
-})
+const testState = atom(0)
 
 const useTest = () => useAtom<number>(testState)
 
