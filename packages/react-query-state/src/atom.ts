@@ -1,6 +1,6 @@
 let keyCount = 0
 
-export function atom<T>(initialValue?: T) {
+export function atom<T>(initialValue?: T | null) {
   const key = `react-query-state-atom-${keyCount++}`
   const existingValue = localStorage.getItem(key)
   if (
