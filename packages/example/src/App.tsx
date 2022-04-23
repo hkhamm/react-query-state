@@ -1,4 +1,9 @@
-import { Button as MuiButton, styled } from "@mui/material"
+import {
+  Button as MuiButton,
+  ButtonGroup,
+  styled,
+  Typography,
+} from "@mui/material"
 import { atom, useAtom } from "@react-query-state/react-query-state"
 import React from "react"
 
@@ -31,27 +36,16 @@ const useTest = () => useAtom<number>(testState)
 const ComponentOne: React.FC = () => {
   const [value, setValue] = useTest()
   return (
-    <div>
-      <h1>Component One</h1>
-      <Button variant="contained" onClick={() => setValue((value ?? 0) - 1)}>
-        -
-      </Button>
-      <Button variant="contained" onClick={() => setValue((value ?? 0) + 1)}>
-        +
-      </Button>
-      <p>{`State: ${value ?? 0}`}</p>
-    </div>
+    <ButtonGroup variant="contained">
+      <Button onClick={() => setValue((value ?? 0) - 1)}>-</Button>
+      <Button onClick={() => setValue((value ?? 0) + 1)}>+</Button>
+    </ButtonGroup>
   )
 }
 
 const ComponentTwo: React.FC = () => {
   const [value, _] = useTest()
-  return (
-    <div>
-      <h1>Component Two</h1>
-      <p>{`State: ${value ?? 0}`}</p>
-    </div>
-  )
+  return <Typography>{`Value: ${value ?? 0}`}</Typography>
 }
 
 const App: React.FC = () => {
