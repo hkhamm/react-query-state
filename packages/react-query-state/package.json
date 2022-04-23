@@ -15,7 +15,6 @@
   },
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
     "react-query": "^3.38.0"
   },
   "packageManager": "yarn@3.2.0"
